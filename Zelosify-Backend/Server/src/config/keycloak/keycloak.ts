@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+
 import KeycloakConnect from "keycloak-connect";
 import session from "express-session";
 import axios from "axios";
