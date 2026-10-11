@@ -25,6 +25,7 @@ model User {
   creator         String?
   createdAt       DateTime     @default(now())
   updatedAt       DateTime     @updatedAt
+  managedOpenings Opening[] @relation("OpeningHiringManager")
 
   // Add the new optional token fields:
   accessToken     String?
@@ -61,6 +62,7 @@ hiringManagerId  String
   actionDate              DateTime? 
   status                  OpeningStatus @default(OPEN) 
   tenant                  Tenants @relation(fields: [tenantId], references: [tenantId]) 
+  hiringManager   User          @relation("OpeningHiringManager", fields: [hiringManagerId], references: [id])
   hiringProfiles          hiringProfile[] 
  
   @@index([tenantId]) 
